@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://codepen.io/GreenSock/pen/JGaKdQ.css"  />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/Draggable.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/InertiaPlugin.min.js"></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+     
+<button id="rotation">console.log() rotation</button><br>
+<img id="knob" src="https://assets.codepen.io/16327/knob_Base.png" width="410" height="410">
+<script >
+   console.clear();
+
+//it doesn't get much easier than this ;)
+const draggable = Draggable.create("#knob", {
+  type: "rotation",
+  inertia: true,
+  onDrag: function() {
+    console.log(this.rotation)
+  }
+});
+
+$("#rotation").click(function() {
+  console.log(gsap.getProperty("#knob", "rotation"), "from element");
+  console.log(Draggable.get("#knob").rotation, "from the Draggable");
+});
+
+</script>
+    <script type="module" src="/src/main.js"></script>
+  </body >
+</html>
